@@ -29,6 +29,8 @@ namespace ToDoWebPart
             services.AddControllersWithViews();
             services.AddTransient<IUserRepository,EFUserREpository>();
             services.AddDbContext<ToDoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,8 @@ namespace ToDoWebPart
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

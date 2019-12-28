@@ -29,8 +29,9 @@ namespace ToDoWebPart.Models.Reposittorys
         {
             if(todo != null)
             {
-                context.Users.ElementAt(userId).toDos.Add(todo);
-                context.SaveChangesAsync();
+
+                context.ToDos.Add(todo);
+                context.SaveChanges();
             }
         }
 

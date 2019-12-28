@@ -12,7 +12,7 @@ namespace ToDoWebPart.Models
             var result = 0;
             foreach (var item in str)
             {
-                result += item * 3 + str.GetHashCode();
+                result += item.GetHashCode();
             }
             return result;
         }

@@ -1,0 +1,59 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h1> Hello, @Model.UserName !</h1>
+            <div class="text-center">
+                @if (Model.toDos != null)
+                {
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Header</td>
+                       
+                            <td>Start From</td>
+                      
+                            <td>End to</td>
+                       
+                            <td>Task</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.toDos)
+                        {
+                            <tr>
+                                <td>@item.Header</td>
+                            
+                            
+                                <td>@item.StartDate</td>
+                          
+                                <td>@item.EndDate</td>
+                           
+                                <td>@item.Task</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <a asp-action="AddTask">Add</a>
+                    <a asp-action="UpdateTask">Update</a>
+                    <a asp-action="DeleteTask">Delete</a>
+                }
+                else
+                {
+                    <h2>Task is empty!</h2>
+                    <a asp-action="AddTask">Add</a>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

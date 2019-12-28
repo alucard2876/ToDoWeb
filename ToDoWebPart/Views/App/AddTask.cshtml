@@ -1,0 +1,40 @@
+﻿@model int
+@{
+    ViewData["Title"] = "AddTask";
+}
+
+<div class="container">
+    
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="text-center">
+                
+                <form id="@Model" asp-action="AddTask" method="post">
+
+                    <input type="hidden" name="Id" value="@Model"/>
+
+                    <label>Task header</label>
+                    <input type="text" name="Header"/>
+
+                    <label>Task start from</label>
+                    <input type="date" name="Start"/>
+
+                    <label>Task endet to</label>
+                    <input type="date" name="End"/>
+
+                    <label>Task</label>
+                    <input type="text" name="ToDo"/>
+
+                    <input type="submit" name="Add"/>
+                    
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

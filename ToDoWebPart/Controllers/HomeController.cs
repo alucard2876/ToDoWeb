@@ -50,9 +50,9 @@ namespace ToDoWebPart.Controllers
                 var userCheck = repo.Users.Where(u => u.UserName.Equals(UserName) && u.Password.Equals(Hash.GetHash(Password))).FirstOrDefault();
                 if(userCheck == null)
                 {
-                    var user = new User { UserName = UserName, Password = Hash.GetHash(Password), toDos = new List<ToDo>()};
+                    var user = new User { UserName = UserName, Password = Hash.GetHash(Password)};
                     repo.AddUser(user);
-                    return RedirectToAction("Index","App", user);
+                    return RedirectToAction("Index", "App", user);
                 }
                 
             }

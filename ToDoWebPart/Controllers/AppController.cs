@@ -34,9 +34,35 @@ namespace ToDoWebPart.Controllers
         public RedirectToActionResult AddTask(int Id, string Header, DateTime Start, DateTime End, string ToDo)
         {
             var task = new ToDo { Header = Header, StartDate = Start, EndDate = End, Task = ToDo, UserId = Id };
-            repo.AddToDo(Id,task);
+            repo.AddToDo(task);
             var user = repo.Users.Where(u => u.Id == Id).FirstOrDefault();
             return RedirectToAction("Index","App",user);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTask(int Id, string Header, DateTime Start, DateTime End, string ToDo,int userId)
+        {
+
+            var task = new ToDo {Id = Id, Header = Header, StartDate = Start, EndDate = End, Task = ToDo, UserId = userId };
+            repo.UpdateToDo(task);
+            
+            var user = repo.Users.Where(u => u.Id == Id).FirstOrDefault();
+            return View("Index",user);
+        }
+
+        public IActionResult UpdateTask(int id)
+        {
+            var task = repo.ToDos.Where(t => t.Id == id).FirstOrDefault();
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteTask(int id)
+        {
+            var user = repo.Users.Where(u => u.Id == HttpContext.Session.GetJson<int>("Id")).FirstOrDefault();
+            repo.DeleteToDo(id);
+
+            return View("Index", user);
         }
     }
 }

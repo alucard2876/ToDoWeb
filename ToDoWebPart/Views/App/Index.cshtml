@@ -29,6 +29,7 @@
                         @foreach (var item in Model.toDos)
                         {
                             <tr>
+                                
                                 <td>@item.Header</td>
                             
                             
@@ -37,13 +38,21 @@
                                 <td>@item.EndDate</td>
                            
                                 <td>@item.Task</td>
+                                <td>
+                                <form asp-action="DeleteTask" method="post" asp-route-id="@item.Id">
+
+                                    <a asp-action="UpdateTask" asp-route-id="@item.Id">Edit</a>
+
+                                    <input type="submit" value="Delete"/>
+
+                                </form>
+                                </td>
                             </tr>
+                            
                         }
                         </tbody>
                     </table>
                     <a asp-action="AddTask">Add</a>
-                    <a asp-action="UpdateTask">Update</a>
-                    <a asp-action="DeleteTask">Delete</a>
                 }
                 else
                 {

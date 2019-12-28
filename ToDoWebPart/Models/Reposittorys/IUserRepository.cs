@@ -9,10 +9,13 @@ namespace ToDoWebPart.Models.Reposittorys
     {
         IEnumerable<User> Users { get; }
 
+        IEnumerable<ToDo> ToDos { get; }
+
         public void AddUser(User user);
 
-        public void AddToDo(int userId, ToDo todo);
+        public void AddToDo(ToDo todo);
 
-        public void DeleteToDo(int userId, int taskId);
+        public void UpdateToDo(ToDo todo);
+        public void DeleteToDo(int taskId);
     }
 }

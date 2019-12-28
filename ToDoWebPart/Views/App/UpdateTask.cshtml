@@ -1,0 +1,38 @@
+﻿@model ToDo
+@{
+    ViewData["Title"] = "UpdateTask";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <form asp-action="UpdateTask" method="post" id="@Model.Id">
+
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <input type="hidden" name="userId" value="@Model.UserId"/>
+                <label>Task header</label>
+                <input type="text" name="Header" value="@Model.Header" />
+
+                <label>Task start from</label>
+                <input type="date" name="Start"  value="@Model.StartDate.Date"/>
+
+                <label>Task endet to</label>
+                <input type="date" name="End" value="@Model.EndDate.Date"/>
+
+                <label>Task</label>
+                <input type="text" name="ToDo" value="@Model.Task"/>
+
+                <input type="submit" name="Add" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<h1>UpdateTask</h1>
+

@@ -5,11 +5,14 @@
 
 <h1>SignUp</h1>
 <div>
-    <form method="post" asp-action="SignUp">
+    <form method="post" asp-action="SignUp" class="form-horizontal">
+        <label>User name</label>
         <input type="text" name="UserName"/>
+        <label>Password</label>
         <input type="password" name="Password"/>
+        <label>Confirm password</label>
         <input type="password" name="ConfirmPassword"/>
-        <input type="submit" value="Sign In"/>
+        <input type="submit" value="Sign In" class="btn btn-success"/>
     </form>
 </div>
 

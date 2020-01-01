@@ -7,10 +7,12 @@
 <h1>SignIn</h1>
 
 <div>
-    <form method="post" asp-action="SignIn"> 
+    <form method="post" asp-action="SignIn" class="form-horizontal"> 
+        <label>User name</label>
         <input type="text" name="UserName"/>
+        <label>Password</label>
         <input  type="password" name="Password"/>
-        <input  type="submit" value="Sign in"/>
+        <input  type="submit" value="Sign in" class="btn btn-success"/>
     </form>
 </div>
 

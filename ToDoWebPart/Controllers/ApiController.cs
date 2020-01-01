@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ToDoWebPart.Models;
 using ToDoWebPart.Models.Reposittorys;
 
@@ -19,17 +20,17 @@ namespace ToDoWebPart.Controllers
         {
             repo = repository;
         }
-
-        [HttpGet]
-        public IEnumerable<ToDo> GetToDos(int userId)
+            
+        [HttpGet("{id}")]
+        public IEnumerable<ToDo> GetToDos(int id)
         {
-            return repo.ToDos.Where(t => t.UserId == userId);
+            return repo.ToDos.Where(t => t.UserId == id);
         }
 
-        [HttpGet]
-        public User GetUser(string name, string password)
+        [HttpGet("{userName}&{password}")]
+        public User GetUser(string userName, string password)
         {
-            return repo.Users.Where(u => u.UserName == name && u.Password == Hash.GetHash(password)).FirstOrDefault();
+            return repo.Users.Where(u => u.UserName == userName && u.Password == Hash.GetHash(password)).FirstOrDefault();
         }
 
         [HttpPut]

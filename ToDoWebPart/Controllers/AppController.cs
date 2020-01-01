@@ -20,6 +20,7 @@ namespace ToDoWebPart.Controllers
         {
             var currUser = repo.Users.Where(u => u.Id == user.Id).FirstOrDefault();
             HttpContext.Session.SetJson("Id",currUser.Id);
+            HttpContext.Session.SetJson("User", currUser);
             return View(currUser);
         }
 
@@ -35,7 +36,7 @@ namespace ToDoWebPart.Controllers
         {
             var task = new ToDo { Header = Header, StartDate = Start, EndDate = End, Task = ToDo, UserId = Id };
             repo.AddToDo(task);
-            var user = repo.Users.Where(u => u.Id == Id).FirstOrDefault();
+            var user = HttpContext.Session.GetJson<User>("User");
             return RedirectToAction("Index","App",user);
         }
 
@@ -46,7 +47,7 @@ namespace ToDoWebPart.Controllers
             var task = new ToDo {Id = Id, Header = Header, StartDate = Start, EndDate = End, Task = ToDo, UserId = userId };
             repo.UpdateToDo(task);
             
-            var user = repo.Users.Where(u => u.Id == Id).FirstOrDefault();
+            var user = HttpContext.Session.GetJson<User>("User");
             return View("Index",user);
         }
 
